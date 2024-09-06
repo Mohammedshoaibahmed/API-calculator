@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculate Academic Performance Score</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('/static/background.jpg'); /* Path to your background image */
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: #fff; /* Ensure text is readable on background */
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px;
+            padding: 30px;
+            background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent background for readability */
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 26px;
+            border-bottom: 3px solid #5a67d8;
+            padding-bottom: 10px;
+        }
+        form {
+            display: grid;
+            gap: 20px;
+        }
+        label {
+            font-weight: bold;
+            color: #555;
+        }
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            transition: border-color 0.3s;
+        }
+        input[type="number"]:focus {
+            border-color: #5a67d8;
+            outline: none;
+        }
+        button {
+            padding: 12px 20px;
+            border: none;
+            background-color: #5a67d8;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #4c51bf;
+        }
+        .category {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #f9f9fb;
+            border-radius: 8px;
+            border-left: 5px solid #5a67d8;
+        }
+        .category h3 {
+            margin-bottom: 15px;
+            color: #444;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Calculate Academic Performance Score</h2>
+        <form method="post" action="{{ url_for('score', username=username) }}">
+            <input type="hidden" name="username" value="{{ username }}">
+
+            <!-- Category I -->
+            <div class="category">
+                <h3>Category I: Teaching, Learning, and Evaluation Related Activities</h3>
+                <label for="subject1">Lectures, practicals, undertaken as percentage of lectures allocated (Max 50):</label>
+                <input type="number" id="subject1" name="subject1" required>
+                <label for="subject2">Lectures or other teaching duties in excess of the State Govt. norms (Max 10):</label>
+                <input type="number" id="subject2" name="subject2" required>
+                <label for="subject3">Preparation and imparting of knowledge/instruction as per curriculum (Max 20):</label>
+                <input type="number" id="subject3" name="subject3" required>
+                <label for="subject4">Use of participatory and innovative teaching-learning methodologies (Max 20):</label>
+                <input type="number" id="subject4" name="subject4" required>
+                <label for="subject5">Examination duties as per allotment (Max 25):</label>
+                <input type="number" id="subject5" name="subject5" required>
+            </div>
+
+            <!-- Category II -->
+            <div class="category">
+                <h3>Category II: Co-curricular, Extension, and Professional Development Related Activities</h3>
+                <label for="activity1">Student related co-curricular, extension, and field-based activities (Max 20):</label>
+                <input type="number" id="activity1" name="activity1" required>
+                <label for="activity2">Contribution to Corporate life and management of the department and institution (Max 15):</label>
+                <input type="number" id="activity2" name="activity2" required>
+                <label for="activity3">Professional Development activities (Max 15):</label>
+                <input type="number" id="activity3" name="activity3" required>
+            </div>
+
+            <!-- Category III -->
+            <div class="category">
+                <h3>Category III: Research and Academic Contributions</h3>
+                <label for="research1">Research papers in Refereed Journals with impact factor 5 and above (Max 45 per publication):</label>
+                <input type="number" id="research1" name="research1" required>
+                <label for="research2">Research papers in Refereed Journals with impact factor between 2 and 5 (Max 35 per publication):</label>
+                <input type="number" id="research2" name="research2" required>
+                <label for="research3">Research papers in Refereed Journals with impact factor between 1 and 2 (Max 30 per publication):</label>
+                <input type="number" id="research3" name="research3" required>
+                <label for="research4">Research papers in Refereed and Indexed Journals (Max 20 per publication):</label>
+                <input type="number" id="research4" name="research4" required>
+                <label for="research5">Non-refereed but recognized journals and periodicals (Max 10 per publication):</label>
+                <input type="number" id="research5" name="research5" required>
+                <label for="research6">Conference proceedings as full papers (Max 10 per publication):</label>
+                <input type="number" id="research6" name="research6" required>
+                <label for="research7">Text or Reference Books by international publishers (Max 50 per book):</label>
+                <input type="number" id="research7" name="research7" required>
+                <label for="research8">Subject Books by National level publishers (Max 25 per book):</label>
+                <input type="number" id="research8" name="research8" required>
+                <label for="research9">Subject Books by other local publishers (Max 15 per book):</label>
+                <input type="number" id="research9" name="research9" required>
+                <label for="research10">Chapter in edited knowledge-based volumes by international publishers (Max 10 per chapter):</label>
+                <input type="number" id="research10" name="research10" required>
+                <label for="research11">Chapter in edited knowledge-based volumes by Indian/National level publishers (Max 5 per chapter):</label>
+                <input type="number" id="research11" name="research11" required>
+                <label for="research12">Major projects (amount mobilized with grant above Rs. 5.00 lakhs) (Max 20 per project):</label>
+                <input type="number" id="research12" name="research12" required>
+                <label for="research13">Minor projects (amount mobilized with grant above Rs. 25000 upto Rs. 3.00 lakhs) (Max 10 per project):</label>
+                <input type="number" id="research13" name="research13" required>
+                <label for="research14">Consultancy projects amount mobilized with minimum of Rs. 2.00 lakhs (Max 10 per project):</label>
+                <input type="number" id="research14" name="research14" required>
+                <label for="research15">Completed projects Report (Acceptance from funding agency) (Max 20 per major project and 10 per minor project):</label>
+                <input type="number" id="research15" name="research15" required>
+                <label for="research16">Projects Outcome/Outputs (Patent/Technology transfer/Product/Process) (Max 30 per national level and 50 per international level output):</label>
+                <input type="number" id="research16" name="research16" required>
+                <label for="research17">M.Phil. Degree awarded (5 points each) (Max 10 points per candidate):</label>
+                <input type="number" id="research17" name="research17" required>
+                <label for="research18">Ph.D. Degree awarded/Thesis submitted (15 points for Degree awarded and 10 for Thesis submitted) (Max 20 points per candidate):</label>
+                <input type="number" id="research18" name="research18" required>
+                <label for="research19">Refresher courses, Methodology workshops, Training, Teaching-Learning-Evaluation Technology Programmes, Soft Skills development Programmes, Faculty Development Programmes (Max 10 points per programme):</label>
+                <input type="number" id="research19" name="research19" required>
+            </div>
+
+            <button type="submit">Calculate Score</button>
+        </form>
+    </div>
+</body>
+</html>

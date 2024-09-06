@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="navbar">
+        <img src="{{ url_for('static', filename='logo-left.png') }}" alt="Left Logo" class="logo logo-left">
+        <div class="nav-buttons">
+            <a href="{{ url_for('login') }}" class="button">Login</a>
+            <a href="{{ url_for('signup') }}" class="button">Sign Up</a>
+            <a href="{{ url_for('about') }}" class="button">About</a>
+        </div>
+        <img src="{{ url_for('static', filename='logo-right.png') }}" alt="Right Logo" class="logo logo-right">
+    </div>
+    <div class="content">
+        <h1>Welcome To The Academic Performance Indicator</h1>
+        <p>"Effortlessly Integrate And Manage Your Data With Our API, Streamlining Your Workflow And Enhancing Application Efficiency"</p>
+    </div>
+</body>
+</html>
